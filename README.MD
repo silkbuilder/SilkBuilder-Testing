@@ -1,6 +1,6 @@
 # Silk Testing Environment - Docker Compose
 
-This repository provides a complete Docker Compose setup for running **SilkBuilder** and **SilkClient** applications with Tomcat 101 and MySQL 8.4 database.
+This repository provides a complete Docker Compose setup for running **SilkBuilder** and **SilkClient** applications with Tomcat 10.1 and MySQL 8.4 database.
 
 ## Features
 
@@ -22,8 +22,8 @@ This repository provides a complete Docker Compose setup for running **SilkBuild
 ### 1. Download the Project
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/silk-testing-environment.git
-cd silk-testing-environment
+git clone https://github.com/silkbuilder/SilkBuilder-Testing.git
+cd SilkBuilder-Testing
 
 Or download the ZIP from this repository and extract it.
 ```
