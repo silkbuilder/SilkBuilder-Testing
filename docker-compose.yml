@@ -1,0 +1,45 @@
+services:
+  mysqlSB:
+    image: mysql:8.4.7
+    container_name: mysqlSB
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword123   # ← Change this!
+      MYSQL_USER: builderuser
+      MYSQL_PASSWORD: testing543
+    volumes:
+      - ./MySql:/var/lib/mysql
+      - ./mysql-init:/docker-entrypoint-initdb.d
+    network_mode: host
+
+  tomcatSB:
+    image: tomcat:10.1-jre17
+    container_name: tomcatSB
+    restart: unless-stopped
+    network_mode: host
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - ./Tomcat:/usr/local/tomcat/webapps
+      - ./tomcat-logs:/usr/local/tomcat/logs
+    command: >
+      sh -c "
+        apt-get update && apt-get install -y git curl sed &&
+        mkdir -p /usr/local/tomcat/webapps/SilkBuilder /usr/local/tomcat/webapps/SilkClient &&
+        if [ ! -d /usr/local/tomcat/webapps/SilkBuilder/.git ]; then
+          git clone https://github.com/silkbuilder/SilkBuilderCore.git /usr/local/tomcat/webapps/SilkBuilder;
+        fi &&
+        if [ ! -d /usr/local/tomcat/webapps/SilkClient/.git ]; then
+          git clone https://github.com/silkbuilder/SilkClientCore.git /usr/local/tomcat/webapps/SilkClient;
+        fi &&
+        sed -i 's/databaseNameHere/builderdb/' /usr/local/tomcat/webapps/SilkBuilder/WEB-INF/applicationContext.xml &&
+        sed -i 's/databaseUserHere/builderuser/' /usr/local/tomcat/webapps/SilkBuilder/WEB-INF/applicationContext.xml &&
+        sed -i 's/databasePasswordHere/testing543/' /usr/local/tomcat/webapps/SilkBuilder/WEB-INF/applicationContext.xml &&
+        sed -i 's/databaseNameHere/clientdb/' /usr/local/tomcat/webapps/SilkClient/WEB-INF/applicationContext.xml &&
+        sed -i 's/databaseUserHere/builderuser/' /usr/local/tomcat/webapps/SilkClient/WEB-INF/applicationContext.xml &&
+        sed -i 's/databasePasswordHere/testing543/' /usr/local/tomcat/webapps/SilkClient/WEB-INF/applicationContext.xml &&
+        echo "5041a26e-572b-481d-929e-79254ca9e043" > /usr/local/tomcat/webapps/SilkClient/WEB-INF/sync.token &&
+        catalina.sh run
+      "
