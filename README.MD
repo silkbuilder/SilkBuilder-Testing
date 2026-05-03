@@ -1,6 +1,8 @@
 # Silk Testing Environment - Docker Compose
 
-This repository provides a complete Docker Compose setup for running **SilkBuilder** and **SilkClient** applications with Tomcat 10.1 and MySQL 8.4 database.
+This repository provides a complete Docker Compose setup for running and testing SilkBuilder Core and SilkClient Core with Tomcat 10.1 and MySQL 8.4 database.
+
+This setup allows you to develop applications with SilkBuilder Code and test them by deploying to SilkClient Core, all running locally on your machine via Docker.
 
 ## Features
 
