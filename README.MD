@@ -90,11 +90,12 @@ docker compose restart tomcatSB
 silk-testing/
 ├── docker-compose.yml
 ├── README.MD
+├── tutor.md             # Tutorial to create first app
 ├── mysql-init/
 │   ├── 00-pre-init.sh
 │   └── 01-init.sql
-├── MySql/    # MySQL data persistence
-├── Tomcat/   # Tomcat webapps
+├── MySql/               # MySQL data persistence auto-filled.
+├── Tomcat/              # Tomcat data persitence auto-filled.
 │   └── ROOT             # Default Application
 │       └── index.html   # Welcoming page
 └── tomcat-logs/         # Tomcat logs
@@ -115,6 +116,10 @@ You can modify ports, passwords, or environment variables directly in `docker-co
 - Port already in use → Change the host port in `docker-compose.yml`
 - Applications show blank/404 → Wait a bit longer on first run and refresh
 
+## First Application
+
+To develop your initial application, refer to the instructions in the [Building the First Application](turor.md) tutorial.
+
 ## License
 
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
@@ -132,5 +137,4 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ---
-
 
