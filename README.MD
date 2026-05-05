@@ -118,7 +118,7 @@ You can modify ports, passwords, or environment variables directly in `docker-co
 
 ## First Application
 
-To develop your initial application, refer to the instructions in the [Building the First Application](turor.md) tutorial.
+To develop your initial application, refer to the instructions in the [Building the First Application](https://github.com/silkbuilder/SilkBuilder-Testing/blob/main/tutor.md) tutorial.
 
 ## License
 
